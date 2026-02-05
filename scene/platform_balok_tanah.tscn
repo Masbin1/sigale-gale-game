@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cmskmdo33t56o"]
+
+[ext_resource type="Texture2D" uid="uid://dgqotcx2w4t8o" path="res://asset/Interaktif_Hutan/Game_Berjalan/Asset.png" id="1_s0ih4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wfaay"]
+size = Vector2(1573, 302)
+
+[node name="Platform" type="AnimatableBody2D" unique_id=1160978995]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=981800235]
+texture = ExtResource("1_s0ih4")
+region_enabled = true
+region_rect = Rect2(356.1725, 1051, 1584.1417, 307)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=714622080]
+position = Vector2(-1.5, 0)
+shape = SubResource("RectangleShape2D_wfaay")

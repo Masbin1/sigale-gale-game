@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://br7uejnk30yxw"]
+
+[ext_resource type="Texture2D" uid="uid://c2rikywjmxppc" path="res://asset/Interaktif_Hutan/Game_Berjalan/Asset_2.png" id="1_rpeln"]
+
+[node name="rumput_awal" type="AnimatableBody2D" unique_id=1840516281]
+
+[node name="Asset2" type="Sprite2D" parent="." unique_id=658023312]
+position = Vector2(2696, 577)
+texture = ExtResource("1_rpeln")
+region_enabled = true
+region_rect = Rect2(719, 306, 6566, 1803)

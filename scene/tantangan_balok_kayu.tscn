@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bjhr8n62q5lfk"]
+
+[ext_resource type="Texture2D" uid="uid://c4ob8va7ghenv" path="res://asset/Interaktif_Hutan/Game_Berjalan/Tantangan.png" id="1_57r04"]
+[ext_resource type="Script" uid="uid://1oggtaoipbot" path="res://script/balok_kayu_tantangan.gd" id="2_axiw1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_axiw1"]
+size = Vector2(662, 335)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hint0"]
+size = Vector2(720, 353)
+
+[node name="platform_balok_kayu" type="AnimatableBody2D" unique_id=970443039]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=457255460]
+position = Vector2(-7, 14.5)
+shape = SubResource("RectangleShape2D_axiw1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1803080496]
+texture = ExtResource("1_57r04")
+region_enabled = true
+region_rect = Rect2(393, 3701, 731, 377)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1414689076]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("2_axiw1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1749088493]
+position = Vector2(-5, -2.5)
+shape = SubResource("RectangleShape2D_hint0")
+
+[node name="Timer" type="Timer" parent="Area2D" unique_id=880209379]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="timeout" from="Area2D/Timer" to="Area2D" method="_on_timer_timeout"]

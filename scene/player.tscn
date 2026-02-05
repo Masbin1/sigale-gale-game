@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://7evj63agee7x"]
+
+[ext_resource type="Script" uid="uid://q0fe7njbm7qj" path="res://script/player.gd" id="1_hjaqi"]
+[ext_resource type="Texture2D" uid="uid://pi1045cuvgaa" path="res://asset/Interaktif_Hutan/Game_Berjalan/Karakter_Revisi.png" id="1_xo3ru"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjaqi"]
+atlas = ExtResource("1_xo3ru")
+region = Rect2(0, 0, 1199, 2105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvtld"]
+atlas = ExtResource("1_xo3ru")
+region = Rect2(1199, 0, 1199, 2105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ct4mp"]
+atlas = ExtResource("1_xo3ru")
+region = Rect2(2398, 0, 1199, 2105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4jxa"]
+atlas = ExtResource("1_xo3ru")
+region = Rect2(3597, 0, 1199, 2105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oh5ij"]
+atlas = ExtResource("1_xo3ru")
+region = Rect2(4796, 0, 1199, 2105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hp4bs"]
+atlas = ExtResource("1_xo3ru")
+region = Rect2(5995, 0, 1199, 2105)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g2vtq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjaqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvtld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ct4mp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4jxa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oh5ij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hp4bs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2fvbb"]
+radius = 15.751984
+
+[node name="Player" type="CharacterBody2D" unique_id=780719397]
+collision_mask = 3
+script = ExtResource("1_hjaqi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1163094914]
+position = Vector2(31.999996, -212)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_g2vtq")
+autoplay = "default"
+frame = 2
+frame_progress = 0.62383753
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1156433056]
+position = Vector2(-21, -78)
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_2fvbb")

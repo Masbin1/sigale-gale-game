@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dvwd166wwvcrw"]
+
+[ext_resource type="Script" uid="uid://djwrbdyewydws" path="res://script/point_1.gd" id="1_l12ul"]
+[ext_resource type="Texture2D" uid="uid://y3l2dw6uu0ri" path="res://asset/Interaktif_Hutan/Game_Berjalan/Poin.png" id="1_vaeu5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l12ul"]
+size = Vector2(609, 252)
+
+[node name="point_1" type="Area2D" unique_id=645422930]
+position = Vector2(1, 0)
+script = ExtResource("1_l12ul")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=285429674]
+texture = ExtResource("1_vaeu5")
+region_enabled = true
+region_rect = Rect2(729, 3163, 612, 266)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1812680052]
+position = Vector2(0.5, 7)
+shape = SubResource("RectangleShape2D_l12ul")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
