@@ -11,6 +11,40 @@
 [ext_resource type="Script" uid="uid://d135vwi28nk7b" path="res://scene/rhythm/spawner.gd" id="5_a5nef"]
 [ext_resource type="AudioStream" uid="uid://b81mu04hbg81x" path="res://audio/batak_song.wav" id="10_a1liy"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a1liy"]
+load_path = "res://.godot/imported/Asset.png-2ff58de9b6c389e57842734c404983a6.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1liy"]
+atlas = SubResource("CompressedTexture2D_a1liy")
+region = Rect2(408, 3722, 395, 358)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gk3e2"]
+load_path = "res://.godot/imported/Asset.png-2ff58de9b6c389e57842734c404983a6.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ooos"]
+atlas = SubResource("CompressedTexture2D_gk3e2")
+region = Rect2(408, 3722, 395, 358)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knnt7"]
+atlas = ExtResource("3_a5nef")
+region = Rect2(408, 3722, 395, 358)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfic3"]
+atlas = ExtResource("3_a5nef")
+region = Rect2(408, 3722, 395, 358)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pm7mp"]
+atlas = ExtResource("3_a5nef")
+region = Rect2(3040, 3716, 1127, 372)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xr6n"]
+atlas = ExtResource("3_a5nef")
+region = Rect2(3753, 3173, 289, 261)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uumlj"]
+atlas = ExtResource("3_a5nef")
+region = Rect2(5729, 3084, 538, 1035)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_gk3e2"]
 atlas = ExtResource("3_j1kn8")
 region = Rect2(0, 0, 3899, 3306)
@@ -62,10 +96,131 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6d6ls"]
-radius = 54.037025
+radius = 63.126858
 
 [node name="RhythmMain" type="Node2D" unique_id=2072620372]
+position = Vector2(576, 325)
 script = ExtResource("1_14pkl")
+
+[node name="RhythmHUD" type="CanvasLayer" parent="." unique_id=781376975]
+
+[node name="Heart" type="Control" parent="RhythmHUD" unique_id=128124451]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 576.0
+offset_top = 325.0
+offset_right = 616.0
+offset_bottom = 365.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Heart1" type="TextureRect" parent="RhythmHUD/Heart" unique_id=59414227]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -14.025
+anchor_top = -7.975
+anchor_right = -14.025
+anchor_bottom = -7.975
+offset_top = 19.0
+offset_right = 40.0
+offset_bottom = 59.0
+texture = SubResource("AtlasTexture_a1liy")
+expand_mode = 1
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Heart2" type="TextureRect" parent="RhythmHUD/Heart" unique_id=213060999]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -3.45
+anchor_top = -2.1
+anchor_right = -3.45
+anchor_bottom = -2.1
+offset_left = -372.0
+offset_top = -216.0
+offset_right = -332.0
+offset_bottom = -176.0
+texture = SubResource("AtlasTexture_3ooos")
+expand_mode = 1
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Heart3" type="TextureRect" parent="RhythmHUD/Heart" unique_id=1240214137]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.0
+anchor_top = -2.8
+anchor_right = 2.0
+anchor_bottom = -2.8
+offset_left = -540.0
+offset_top = -188.0
+offset_right = -500.0
+offset_bottom = -148.0
+texture = SubResource("AtlasTexture_knnt7")
+expand_mode = 1
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Heart4" type="TextureRect" parent="RhythmHUD/Heart" unique_id=1735303266]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -4.45
+anchor_top = -1.25
+anchor_right = -4.45
+anchor_bottom = -1.25
+offset_left = -232.0
+offset_top = -250.0
+offset_right = -192.0
+offset_bottom = -210.0
+texture = SubResource("AtlasTexture_rfic3")
+expand_mode = 1
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="StartButton" type="TextureButton" parent="RhythmHUD" unique_id=1429829100]
+offset_left = 520.0
+offset_top = 495.99997
+offset_right = 1647.0
+offset_bottom = 868.0
+scale = Vector2(0.1, 0.1)
+texture_normal = SubResource("AtlasTexture_pm7mp")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseButton" type="TextureButton" parent="RhythmHUD" unique_id=2112782384]
+offset_left = 1093.0
+offset_top = 10.0
+offset_right = 1382.0
+offset_bottom = 271.0
+scale = Vector2(0.15, 0.15)
+texture_normal = SubResource("AtlasTexture_8xr6n")
+metadata/_edit_use_anchors_ = true
+
+[node name="Countdown" type="Control" parent="RhythmHUD" unique_id=804455146]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 530.0
+offset_top = 371.0
+offset_right = 570.0
+offset_bottom = 411.0
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="RhythmHUD/Countdown" unique_id=1813176865]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -5.925
+anchor_top = -1.45
+anchor_right = -5.925
+anchor_bottom = -1.45
+offset_left = 237.0
+offset_top = -42.0
+offset_right = 775.0
+offset_bottom = 993.0001
+scale = Vector2(0.2, 0.2)
+texture = SubResource("AtlasTexture_uumlj")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="CountdownTimer" type="Timer" parent="RhythmHUD" unique_id=1574241407]
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1065428549]
 stream = ExtResource("10_a1liy")
@@ -85,7 +240,7 @@ position = Vector2(0, 28.999998)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_3ooos")
 autoplay = "default"
-frame_progress = 0.23163001
+frame_progress = 0.9861699
 
 [node name="Lane" type="Node2D" parent="." unique_id=1767338304]
 script = ExtResource("3_77sps")
@@ -101,7 +256,6 @@ region_enabled = true
 region_rect = Rect2(949, 3061, 1093, 1093)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lane/HitZone" unique_id=836847211]
-visible = false
 position = Vector2(-432, 143)
 shape = SubResource("CircleShape2D_6d6ls")
 
@@ -119,10 +273,4 @@ texture = ExtResource("3_a5nef")
 region_enabled = true
 region_rect = Rect2(0, 2454, 8001, 499)
 
-[node name="RhythmHUD" type="CanvasLayer" parent="." unique_id=781376975]
-
-[node name="Hearts" type="Node2D" parent="RhythmHUD" unique_id=436217846]
-
-[node name="PauseButton" type="TextureButton" parent="RhythmHUD" unique_id=1353447141]
-offset_right = 40.0
-offset_bottom = 40.0
+[connection signal="pressed" from="RhythmHUD/StartButton" to="." method="_on_start_button_pressed"]

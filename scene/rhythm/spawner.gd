@@ -5,23 +5,28 @@ extends Node2D
 @export var spawn_y: float = 140.0
 @export var hit_x: float = 300.0
 @export var travel_time: float = 2.0
-
-@export var beats_per_note: int = 2  # 🔥 KUNCI: 2 beat = 1 note
+@export var beats_per_note: int = 2
 
 @onready var notes: Node2D = $"../Notes"
 @onready var rhythm = get_parent().get_parent()
 
-var next_beat_time: float = 0.0
+var next_beat_time := 0.0
+
 
 func _ready():
 	next_beat_time = 0.0
 
+
 func _process(_delta):
+	if not rhythm.game_started:
+		return
+
 	var song_time = rhythm.get_song_time()
 
 	if song_time >= next_beat_time:
 		spawn_note()
 		next_beat_time += rhythm.beat_interval * beats_per_note
+
 
 func spawn_note():
 	if note_scene == null:
