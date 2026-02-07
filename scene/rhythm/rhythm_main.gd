@@ -5,7 +5,6 @@ extends Node2D
 # ======================
 @export var bpm: float = 125.0
 @export var song_offset: float = 1.2
-@export var atlas_texture: Texture2D
 
 @onready var music: AudioStreamPlayer = $Music
 
@@ -13,8 +12,12 @@ extends Node2D
 # 🧠 HUD
 # ======================
 @onready var heart_container = $RhythmHUD/Heart
-@onready var countdown_rect: TextureRect = $RhythmHUD/Countdown/TextureRect
-@onready var countdown_timer: Timer = $RhythmHUD/CountdownTimer
+
+@onready var cd_three = $RhythmHUD/Countdown/count3
+@onready var cd_two   = $RhythmHUD/Countdown/count2
+@onready var cd_one   = $RhythmHUD/Countdown/count1
+@onready var cd_timer = $RhythmHUD/CountdownTimer
+
 @onready var start_button = $RhythmHUD/StartButton
 @onready var pause_button = $RhythmHUD/PauseButton
 
@@ -22,23 +25,13 @@ extends Node2D
 # 🧮 GAME STATE
 # ======================
 var beat_interval: float
-var game_started: bool = false
-var game_over_state: bool = false
+var game_started := false
+var game_over_state := false
 
-var max_life: int = 4
-var current_life: int = 4
+var max_life := 4
+var current_life := 4
 
-# ======================
-# 🔢 COUNTDOWN REGIONS
-# ======================
-var countdown_regions := [
-	Rect2(4250, 3134, 496, 937),  # 3
-	Rect2(4912, 3122, 672, 959),  # 2
-	Rect2(5729, 3084, 538, 1035)  # 1
-]
-
-var countdown_index: int = 0
-
+var countdown_step := 0
 
 # ======================
 # 🚀 READY
@@ -51,21 +44,19 @@ func _ready():
 	current_life = max_life
 
 	update_hearts()
-
+	hide_all_countdown()
 	music.stop()
-	countdown_rect.visible = false
 
 	# timer
-	if not countdown_timer.timeout.is_connected(_on_CountdownTimer_timeout):
-		countdown_timer.timeout.connect(_on_CountdownTimer_timeout)
+	if not cd_timer.timeout.is_connected(_on_CountdownTimer_timeout):
+		cd_timer.timeout.connect(_on_CountdownTimer_timeout)
 
-	# buttons (AMAN walau connect dari editor)
+	# buttons
 	if start_button and not start_button.pressed.is_connected(_on_start_button_pressed):
 		start_button.pressed.connect(_on_start_button_pressed)
 
 	if pause_button and not pause_button.pressed.is_connected(_on_pause_button_pressed):
 		pause_button.pressed.connect(_on_pause_button_pressed)
-
 
 # ======================
 # 🎮 INPUT
@@ -77,7 +68,6 @@ func _process(_delta):
 	if Input.is_action_just_pressed("hit"):
 		$Lane/HitZone.try_hit()
 
-
 # ======================
 # ⏱ SONG TIME
 # ======================
@@ -86,7 +76,6 @@ func get_song_time() -> float:
 		return 0.0
 
 	return max(0.0, music.get_playback_position() - song_offset)
-
 
 # ======================
 # ▶️ START BUTTON
@@ -98,7 +87,6 @@ func _on_start_button_pressed():
 	print("🔥 START BUTTON CLICKED")
 	start_countdown()
 
-
 # ======================
 # ⏸ PAUSE BUTTON
 # ======================
@@ -108,38 +96,44 @@ func _on_pause_button_pressed():
 
 	get_tree().paused = not get_tree().paused
 
-
 # ======================
 # 🔢 COUNTDOWN
 # ======================
 func start_countdown():
-	countdown_index = 0
 	game_started = false
 	game_over_state = false
+	countdown_step = 0
 
-	show_countdown()
-	countdown_timer.start(1.0)
+	hide_all_countdown()
+	show_countdown_step()
 
+	cd_timer.start(1.0)
 
-func show_countdown():
-	var atlas := AtlasTexture.new()
-	atlas.atlas = atlas_texture
-	atlas.region = countdown_regions[countdown_index]
+func show_countdown_step():
+	hide_all_countdown()
 
-	countdown_rect.texture = atlas
-	countdown_rect.visible = true
+	match countdown_step:
+		0:
+			cd_three.visible = true
+		1:
+			cd_two.visible = true
+		2:
+			cd_one.visible = true
 
+func hide_all_countdown():
+	cd_three.visible = false
+	cd_two.visible = false
+	cd_one.visible = false
 
 func _on_CountdownTimer_timeout():
-	countdown_index += 1
+	countdown_step += 1
 
-	if countdown_index >= countdown_regions.size():
-		countdown_timer.stop()
-		countdown_rect.visible = false
+	if countdown_step >= 3:
+		cd_timer.stop()
+		hide_all_countdown()
 		start_game()
 	else:
-		show_countdown()
-
+		show_countdown_step()
 
 # ======================
 # 🎶 START GAME
@@ -149,9 +143,11 @@ func start_game():
 	game_started = true
 	game_over_state = false
 
+	start_button.visible = false   # 👈 KUNCI UTAMA
+	pause_button.visible = true    # optional
+
 	music.play()
 	music.seek(song_offset)
-
 
 # ======================
 # ❤️ LIFE SYSTEM
@@ -169,11 +165,9 @@ func lose_life():
 	if current_life <= 0:
 		game_over()
 
-
 func update_hearts():
 	for i in range(max_life):
 		heart_container.get_child(i).visible = i < current_life
-
 
 # ======================
 # ☠️ GAME OVER
@@ -186,9 +180,4 @@ func game_over():
 	game_started = false
 
 	print("☠️ GAME OVER")
-
 	music.stop()
-
-	# ⚠️ TIDAK reload scene otomatis
-	# kalau mau restart manual:
-	# get_tree().reload_current_scene()

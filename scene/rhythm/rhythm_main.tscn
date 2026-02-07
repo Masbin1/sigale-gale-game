@@ -45,6 +45,14 @@ region = Rect2(3753, 3173, 289, 261)
 atlas = ExtResource("3_a5nef")
 region = Rect2(5729, 3084, 538, 1035)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xiubi"]
+atlas = ExtResource("3_a5nef")
+region = Rect2(4912, 3122, 672, 959)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypok4"]
+atlas = ExtResource("3_a5nef")
+region = Rect2(4250, 3134, 496, 937)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_gk3e2"]
 atlas = ExtResource("3_j1kn8")
 region = Rect2(0, 0, 3899, 3306)
@@ -204,7 +212,7 @@ offset_right = 570.0
 offset_bottom = 411.0
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="RhythmHUD/Countdown" unique_id=1813176865]
+[node name="count3" type="TextureRect" parent="RhythmHUD/Countdown" unique_id=1813176865]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -5.925
@@ -219,6 +227,22 @@ scale = Vector2(0.2, 0.2)
 texture = SubResource("AtlasTexture_uumlj")
 stretch_mode = 4
 metadata/_edit_use_anchors_ = true
+
+[node name="count2" type="TextureRect" parent="RhythmHUD/Countdown" unique_id=1579705447]
+layout_mode = 0
+offset_top = -100.0
+offset_right = 672.0
+offset_bottom = 860.95996
+scale = Vector2(0.2, 0.2)
+texture = SubResource("AtlasTexture_xiubi")
+
+[node name="count1" type="TextureRect" parent="RhythmHUD/Countdown" unique_id=495399861]
+layout_mode = 0
+offset_top = -100.0
+offset_right = 496.0
+offset_bottom = 837.0
+scale = Vector2(0.2, 0.2)
+texture = SubResource("AtlasTexture_ypok4")
 
 [node name="CountdownTimer" type="Timer" parent="RhythmHUD" unique_id=1574241407]
 
