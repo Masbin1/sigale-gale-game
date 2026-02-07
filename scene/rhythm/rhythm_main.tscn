@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cai7i0ungvkbr" path="res://asset/Interaktif_Ritme/Game_Ritme/Karakter_Menari.png" id="4_a1liy"]
 [ext_resource type="PackedScene" uid="uid://j0joplidf0je" path="res://scene/rhythm/note/note.tscn" id="4_umwlo"]
 [ext_resource type="Script" uid="uid://d135vwi28nk7b" path="res://scene/rhythm/spawner.gd" id="5_a5nef"]
+[ext_resource type="AudioStream" uid="uid://b81mu04hbg81x" path="res://audio/batak_song.wav" id="10_a1liy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gk3e2"]
 atlas = ExtResource("3_j1kn8")
@@ -66,6 +67,14 @@ radius = 54.037025
 [node name="RhythmMain" type="Node2D" unique_id=2072620372]
 script = ExtResource("1_14pkl")
 
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1065428549]
+stream = ExtResource("10_a1liy")
+volume_db = -19.925
+autoplay = true
+mix_target = 1
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1829940751]
+
 [node name="Background" type="Sprite2D" parent="." unique_id=230392773]
 position = Vector2(-4.000122, 1.499939)
 scale = Vector2(0.1454818, 0.14507885)
@@ -76,7 +85,7 @@ position = Vector2(0, 28.999998)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_3ooos")
 autoplay = "default"
-frame_progress = 0.79414684
+frame_progress = 0.91388446
 
 [node name="Lane" type="Node2D" parent="." unique_id=1767338304]
 script = ExtResource("3_77sps")
@@ -109,8 +118,7 @@ shape = SubResource("CircleShape2D_6d6ls")
 position = Vector2(0, 0.39)
 script = ExtResource("5_a5nef")
 note_scene = ExtResource("4_umwlo")
-
-[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1065428549]
+spawn_interval = 1.1
 
 [node name="RhythmHUD" type="CanvasLayer" parent="." unique_id=781376975]
 
@@ -119,5 +127,3 @@ note_scene = ExtResource("4_umwlo")
 [node name="PauseButton" type="TextureButton" parent="RhythmHUD" unique_id=1353447141]
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1829940751]
