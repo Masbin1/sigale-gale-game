@@ -1,18 +1,21 @@
 extends Node2D
 
+@export var bpm: float = 125.0
+@export var song_offset: float = 1.2   # 🔥 mulai dari detik ke-1
+
+var beat_interval: float
+
 @onready var music: AudioStreamPlayer = $Music
 
-@export var start_offset := 1.4   # detik mulai lagu
-
 func _ready():
-	print("Rhythm Scene Loaded ✅")
+	beat_interval = 60.0 / bpm
 
 	music.play()
-	music.seek(start_offset)
+	music.seek(song_offset)   # ✅ ini yang benar
 
 func _process(_delta):
 	if Input.is_action_just_pressed("hit"):
 		$Lane/HitZone.try_hit()
 
 func get_song_time() -> float:
-	return music.get_playback_position() - start_offset
+	return max(0.0, music.get_playback_position() - song_offset)

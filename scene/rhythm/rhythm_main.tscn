@@ -85,17 +85,10 @@ position = Vector2(0, 28.999998)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_3ooos")
 autoplay = "default"
-frame_progress = 0.91388446
+frame_progress = 0.23163001
 
 [node name="Lane" type="Node2D" parent="." unique_id=1767338304]
 script = ExtResource("3_77sps")
-
-[node name="HitLine" type="Sprite2D" parent="Lane" unique_id=1172694385]
-position = Vector2(-8.474983, 142.99998)
-scale = Vector2(0.14586301, 0.1)
-texture = ExtResource("3_a5nef")
-region_enabled = true
-region_rect = Rect2(0, 2454, 8001, 499)
 
 [node name="HitZone" type="Area2D" parent="Lane" unique_id=1763018014]
 script = ExtResource("3_6d6ls")
@@ -114,11 +107,17 @@ shape = SubResource("CircleShape2D_6d6ls")
 
 [node name="Notes" type="Node2D" parent="Lane" unique_id=1950265324]
 
-[node name="Spawner" type="Node2D" parent="." unique_id=895098048]
+[node name="Spawner" type="Node2D" parent="Lane" unique_id=895098048]
 position = Vector2(0, 0.39)
 script = ExtResource("5_a5nef")
 note_scene = ExtResource("4_umwlo")
-spawn_interval = 1.1
+
+[node name="HitLine" type="Sprite2D" parent="Lane" unique_id=1172694385]
+position = Vector2(-8.474983, 142.99998)
+scale = Vector2(0.14586301, 0.1)
+texture = ExtResource("3_a5nef")
+region_enabled = true
+region_rect = Rect2(0, 2454, 8001, 499)
 
 [node name="RhythmHUD" type="CanvasLayer" parent="." unique_id=781376975]
 
