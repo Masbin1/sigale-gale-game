@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bw3duuwyudleb"]
+
+[ext_resource type="Script" uid="uid://7ehnb22jar11" path="res://scene/puzzle/slots/puzzle_slot.gd" id="1_slah6"]
+
+[node name="PuzzleSlot" type="Area2D" unique_id=1877710411]
+script = ExtResource("1_slah6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1796347567]

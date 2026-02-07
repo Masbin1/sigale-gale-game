@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bjhr8n62q5lfk"]
 
 [ext_resource type="Texture2D" uid="uid://c4ob8va7ghenv" path="res://asset/Interaktif_Hutan/Game_Berjalan/Tantangan.png" id="1_57r04"]
-[ext_resource type="Script" uid="uid://1oggtaoipbot" path="res://script/balok_kayu_tantangan.gd" id="2_axiw1"]
+[ext_resource type="Script" uid="uid://1oggtaoipbot" path="res://script/platformer/balok_kayu_tantangan.gd" id="2_axiw1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_axiw1"]
 size = Vector2(662, 335)

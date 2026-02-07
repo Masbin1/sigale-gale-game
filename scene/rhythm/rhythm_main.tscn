@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://bnouxp2eet8ue"]
+
+[ext_resource type="Script" uid="uid://bw8ppmlq25nur" path="res://scene/rhythm/rhythm_main.gd" id="1_14pkl"]
+[ext_resource type="Texture2D" uid="uid://b5yiwlp1xopb8" path="res://asset/Interaktif_Ritme/Game_Ritme/Background.png" id="2_umwlo"]
+[ext_resource type="Script" uid="uid://bqacwwtphvuta" path="res://scene/rhythm/hit_zone.gd" id="3_6d6ls"]
+[ext_resource type="Script" uid="uid://dlvahj7in2kbn" path="res://scene/rhythm/lane.gd" id="3_77sps"]
+[ext_resource type="Texture2D" uid="uid://dtjjtnowhtddn" path="res://asset/Interaktif_Ritme/Game_Ritme/Asset.png" id="3_a5nef"]
+[ext_resource type="Texture2D" uid="uid://c0l4ep3eo04c" path="res://asset/Interaktif_Ritme/Game_Ritme/Karakter_Diam.png" id="3_j1kn8"]
+[ext_resource type="Texture2D" uid="uid://cai7i0ungvkbr" path="res://asset/Interaktif_Ritme/Game_Ritme/Karakter_Menari.png" id="4_a1liy"]
+[ext_resource type="PackedScene" uid="uid://j0joplidf0je" path="res://scene/rhythm/note/note.tscn" id="4_umwlo"]
+[ext_resource type="Script" uid="uid://d135vwi28nk7b" path="res://scene/rhythm/spawner.gd" id="5_a5nef"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gk3e2"]
+atlas = ExtResource("3_j1kn8")
+region = Rect2(0, 0, 3899, 3306)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ef84w"]
+atlas = ExtResource("3_j1kn8")
+region = Rect2(3899, 0, 3899, 3306)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6x3wl"]
+atlas = ExtResource("4_a1liy")
+region = Rect2(0, 0, 2100, 3306)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5y2m"]
+atlas = ExtResource("4_a1liy")
+region = Rect2(2100, 0, 2100, 3306)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rouww"]
+atlas = ExtResource("4_a1liy")
+region = Rect2(4200, 0, 2100, 3306)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7upc"]
+atlas = ExtResource("4_a1liy")
+region = Rect2(6300, 0, 2100, 3306)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3ooos"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gk3e2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ef84w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6x3wl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5y2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rouww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7upc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6d6ls"]
+radius = 54.037025
+
+[node name="RhythmMain" type="Node2D" unique_id=2072620372]
+script = ExtResource("1_14pkl")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=230392773]
+position = Vector2(-4.000122, 1.499939)
+scale = Vector2(0.1454818, 0.14507885)
+texture = ExtResource("2_umwlo")
+
+[node name="animatedCenter" type="AnimatedSprite2D" parent="." unique_id=180611651]
+position = Vector2(0, 28.999998)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_3ooos")
+autoplay = "default"
+frame_progress = 0.79414684
+
+[node name="Lane" type="Node2D" parent="." unique_id=1767338304]
+script = ExtResource("3_77sps")
+
+[node name="HitLine" type="Sprite2D" parent="Lane" unique_id=1172694385]
+position = Vector2(-8.474983, 142.99998)
+scale = Vector2(0.14586301, 0.1)
+texture = ExtResource("3_a5nef")
+region_enabled = true
+region_rect = Rect2(0, 2454, 8001, 499)
+
+[node name="HitZone" type="Area2D" parent="Lane" unique_id=1763018014]
+script = ExtResource("3_6d6ls")
+
+[node name="Sprite2D" type="Sprite2D" parent="Lane/HitZone" unique_id=522683068]
+position = Vector2(-432, 144)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_a5nef")
+region_enabled = true
+region_rect = Rect2(949, 3061, 1093, 1093)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lane/HitZone" unique_id=836847211]
+visible = false
+position = Vector2(-432, 143)
+shape = SubResource("CircleShape2D_6d6ls")
+
+[node name="Notes" type="Node2D" parent="Lane" unique_id=1950265324]
+
+[node name="Spawner" type="Node2D" parent="." unique_id=895098048]
+position = Vector2(0, 0.39)
+script = ExtResource("5_a5nef")
+note_scene = ExtResource("4_umwlo")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1065428549]
+
+[node name="RhythmHUD" type="CanvasLayer" parent="." unique_id=781376975]
+
+[node name="Hearts" type="Node2D" parent="RhythmHUD" unique_id=436217846]
+
+[node name="PauseButton" type="TextureButton" parent="RhythmHUD" unique_id=1353447141]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1829940751]

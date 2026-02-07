@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cvglk105rtmdi"]
+
+[ext_resource type="Texture2D" uid="uid://dtjjtnowhtddn" path="res://asset/Interaktif_Ritme/Game_Ritme/Asset.png" id="1_312a8"]
+
+[node name="Sprite2D" type="Sprite2D" unique_id=807518413]
+texture = ExtResource("1_312a8")
+region_enabled = true
+region_rect = Rect2(0, 2454, 8001, 499)

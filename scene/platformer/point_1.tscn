@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dvwd166wwvcrw"]
 
-[ext_resource type="Script" uid="uid://djwrbdyewydws" path="res://script/point_1.gd" id="1_l12ul"]
+[ext_resource type="Script" uid="uid://djwrbdyewydws" path="res://script/platformer/point_1.gd" id="1_l12ul"]
 [ext_resource type="Texture2D" uid="uid://y3l2dw6uu0ri" path="res://asset/Interaktif_Hutan/Game_Berjalan/Poin.png" id="1_vaeu5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l12ul"]

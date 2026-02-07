@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dw7vs0k5oikwa"]
+
+[ext_resource type="Script" uid="uid://w3xxmxr335vm" path="res://scene/puzzle/puzzle_main.gd" id="1_xbude"]
+[ext_resource type="Texture2D" uid="uid://ccrk27mqfxav4" path="res://asset/Interaktif_Puzzle/Puzzle/Background.png" id="2_co3lq"]
+
+[node name="PuzzleMain" type="Node2D" unique_id=77457502]
+script = ExtResource("1_xbude")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1267751634]
+zoom = Vector2(0.35, 0.35)
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1966388478]
+position = Vector2(-3.0000181, 5.499955)
+scale = Vector2(0.41094863, 0.41124198)
+texture = ExtResource("2_co3lq")
+
+[node name="Silhouette" type="Sprite2D" parent="." unique_id=1364304373]
+
+[node name="Slots" type="Node2D" parent="." unique_id=405872309]
+
+[node name="Pieces" type="Node2D" parent="." unique_id=198048499]
+
+[node name="PuzzleHUD" type="CanvasLayer" parent="." unique_id=1600163679]

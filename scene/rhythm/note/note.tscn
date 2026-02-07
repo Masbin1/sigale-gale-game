@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://j0joplidf0je"]
+
+[ext_resource type="Texture2D" uid="uid://dtjjtnowhtddn" path="res://asset/Interaktif_Ritme/Game_Ritme/Asset.png" id="1_0ita6"]
+[ext_resource type="Script" uid="uid://c06g6y1ntvdc8" path="res://scene/rhythm/note/note.gd" id="1_0kc7t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0kc7t"]
+radius = 45.01111
+
+[node name="Note" type="Area2D" unique_id=484110447 groups=["note"]]
+script = ExtResource("1_0kc7t")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=475334404]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_0ita6")
+region_enabled = true
+region_rect = Rect2(2107, 3306, 887, 887)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=219965025]
+shape = SubResource("CircleShape2D_0kc7t")

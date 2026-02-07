@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://7evj63agee7x"]
 
-[ext_resource type="Script" uid="uid://q0fe7njbm7qj" path="res://script/player.gd" id="1_hjaqi"]
+[ext_resource type="Script" uid="uid://q0fe7njbm7qj" path="res://script/platformer/player.gd" id="1_hjaqi"]
 [ext_resource type="Texture2D" uid="uid://pi1045cuvgaa" path="res://asset/Interaktif_Hutan/Game_Berjalan/Karakter_Revisi.png" id="1_xo3ru"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hjaqi"]
